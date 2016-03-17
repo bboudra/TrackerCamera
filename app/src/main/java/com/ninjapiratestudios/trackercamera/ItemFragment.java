@@ -2,6 +2,7 @@ package com.ninjapiratestudios.trackercamera;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,7 +60,7 @@ public class ItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-
+        String path = Environment.getExternalStorageDirectory().toString()+"/"
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
