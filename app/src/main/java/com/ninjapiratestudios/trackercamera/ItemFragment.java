@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 
 import com.ninjapiratestudios.trackercamera.dummy.DummyContent;
 import com.ninjapiratestudios.trackercamera.dummy.DummyContent.DummyItem;
+import com.ninjapiratestudios.trackercamera.fileContent.FileContent;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -60,7 +62,7 @@ public class ItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-        String path = Environment.getExternalStorageDirectory().toString()+"/"
+        //FileContent fC = getFileContent();
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -73,6 +75,13 @@ public class ItemFragment extends Fragment {
             recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
+    }
+
+    public FileContent getFileContent(){
+        File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
+        File[] files = f.listFiles();
+        FileContent fC = new FileContent(files);
+        return fC;
     }
 
 

@@ -18,9 +18,9 @@ public class FileContent {
     public FileContent(File[] files){
         for(File file:files)
         {
-
+            fileContentList.add(new FileHolder(file));
         }
-
+        Collections.sort(fileContentList);
     }
 
     public void addItem(FileHolder fH){
@@ -38,23 +38,16 @@ public class FileContent {
      */
     public static class FileHolder implements Comparable {
 
-        private File videoFile;
-        private String location;
+        public File videoFile;
 
         public FileHolder(File f)
         {
             this.videoFile = f;
-            this.location = f.getAbsolutePath();
         }
 
         public File getVideoFile()
         {
             return this.videoFile;
-        }
-
-        public String getVideoLocation()
-        {
-            return this.location;
         }
 
         @Override
