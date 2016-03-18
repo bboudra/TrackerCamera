@@ -3,10 +3,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import java.io.File;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 /**
  * Created by benjamin on 3/15/16.
@@ -45,10 +43,13 @@ public class FileContent {
      */
     public class FileHolder implements Comparable {
 
-        public File videoFile;
-
+        public final String id;
+        public final String content;
+        public final File videoFile;
         public FileHolder(File f)
         {
+            this.id = f.getAbsolutePath();
+            this.content = f.getName();
             this.videoFile = f;
         }
 

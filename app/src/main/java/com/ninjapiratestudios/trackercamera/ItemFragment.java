@@ -1,6 +1,7 @@
 package com.ninjapiratestudios.trackercamera;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
@@ -61,7 +62,7 @@ public class ItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-        getFileContent();
+        FileContent fC= getFileContent();
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -71,18 +72,18 @@ public class ItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(fC.getItems(), mListener));
         }
         return view;
     }
 
-    public void getFileContent(){ //return type FileContent
+    public FileContent getFileContent(){ //return type FileContent
         File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
         File[] files = f.listFiles();
         Log.d("FilePath", f.getAbsolutePath());
         Log.d("FileContent", new Boolean(f.exists()).toString());
         FileContent fC = new FileContent(files);
-        // return fC;
+        return fC;
     }
 
 
@@ -115,6 +116,6 @@ public class ItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Uri file);
     }
 }
