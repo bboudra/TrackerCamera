@@ -1,4 +1,7 @@
 package com.ninjapiratestudios.trackercamera.fileContent;
+import android.provider.MediaStore;
+import android.util.Log;
+
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
@@ -14,10 +17,14 @@ public class FileContent {
     public FileContent(){
         fileContentList = new ArrayList<>();
     }
-
     public FileContent(File[] files){
+        fileContentList = new ArrayList<>();
+        Log.d("FileLength", new Integer(files.length).toString());
         for(File file:files)
         {
+            Log.d("Exists",new Boolean(file.exists()).toString());
+            Log.d("FileName", file.getName());
+            Log.d("FileContents",file.toString());
             fileContentList.add(new FileHolder(file));
         }
         Collections.sort(fileContentList);
@@ -36,7 +43,7 @@ public class FileContent {
     /**
      * Created by benjamin on 3/15/16.
      */
-    public static class FileHolder implements Comparable {
+    public class FileHolder implements Comparable {
 
         public File videoFile;
 

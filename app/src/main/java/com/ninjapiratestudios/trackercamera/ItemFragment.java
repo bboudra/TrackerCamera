@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,7 @@ import java.util.List;
  */
 public class ItemFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
@@ -80,7 +79,9 @@ public class ItemFragment extends Fragment {
     public void getFileContent(){ //return type FileContent
         File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
         File[] files = f.listFiles();
-        // FileContent fC = new FileContent(files);
+        Log.d("FilePath", f.getAbsolutePath());
+        Log.d("FileContent", new Boolean(f.exists()).toString());
+        FileContent fC = new FileContent(files);
         // return fC;
     }
 
