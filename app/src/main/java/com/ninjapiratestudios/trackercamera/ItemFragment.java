@@ -62,7 +62,7 @@ public class ItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-        //FileContent fC = getFileContent();
+        getFileContent();
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -77,11 +77,11 @@ public class ItemFragment extends Fragment {
         return view;
     }
 
-    public FileContent getFileContent(){
+    public void getFileContent(){ //return type FileContent
         File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
         File[] files = f.listFiles();
-        FileContent fC = new FileContent(files);
-        return fC;
+        // FileContent fC = new FileContent(files);
+        // return fC;
     }
 
 
