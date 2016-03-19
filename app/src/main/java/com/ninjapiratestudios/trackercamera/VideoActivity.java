@@ -1,5 +1,6 @@
 package com.ninjapiratestudios.trackercamera;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -55,7 +56,10 @@ public class VideoActivity extends AppCompatActivity implements ItemFragment.OnL
     }
 
     @Override
-    public void onListFragmentInteraction(Uri file) {
-
+    public void onListFragmentInteraction(Uri videoUri) {
+        Intent galleryIntent = new Intent();
+        galleryIntent.setAction(Intent.ACTION_VIEW);
+        galleryIntent.setDataAndType(videoUri, "video/*");
+        startActivity(galleryIntent);
     }
 }
