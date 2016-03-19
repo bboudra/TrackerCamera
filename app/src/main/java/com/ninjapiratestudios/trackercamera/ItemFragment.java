@@ -31,6 +31,7 @@ public class ItemFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private RecyclerView.Adapter mAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -72,7 +73,8 @@ public class ItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(fC.getItems(), mListener));
+            mAdapter = new MyItemRecyclerViewAdapter(fC.getItems(), mListener);
+            recyclerView.setAdapter(mAdapter);
         }
         return view;
     }
