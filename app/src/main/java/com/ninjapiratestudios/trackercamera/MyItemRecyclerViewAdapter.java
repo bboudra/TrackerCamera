@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<FileContent.FileHolder> mValues;
+    private List<FileContent.FileHolder> mValues;
     private final OnListFragmentInteractionListener mListener;
 
     public MyItemRecyclerViewAdapter(List<FileContent.FileHolder> items, OnListFragmentInteractionListener listener) {

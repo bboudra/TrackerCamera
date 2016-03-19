@@ -62,7 +62,7 @@ public class ItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-        FileContent fC= getFileContent();
+        FileContent fC= getFileContent(true);
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -77,9 +77,18 @@ public class ItemFragment extends Fragment {
         return view;
     }
 
-    public FileContent getFileContent(){ //return type FileContent
-        File f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
-        File[] files = f.listFiles();
+
+    public FileContent getFileContent(boolean external){ //return type FileContent
+        File f = null;
+        File[] files = null;
+        if(external)
+        {
+            f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
+            files = f.listFiles();
+        } else {
+            f = getActivity().getDir("files", Context.MODE_WORLD_READABLE);
+            files = f.listFiles();
+        }
         Log.d("FilePath", f.getAbsolutePath());
         Log.d("FileContent", new Boolean(f.exists()).toString());
         FileContent fC = new FileContent(files);
