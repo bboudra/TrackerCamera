@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninjapiratestudios.trackercamera.ItemFragment;
+import com.ninjapiratestudios.trackercamera.fileContent.FileContent;
 
 import junit.framework.Assert;
 
@@ -15,10 +16,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
+
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import f
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Matchers.anyInt;
@@ -30,12 +32,17 @@ import static org.mockito.Matchers.anyInt;
 @RunWith(PowerMockRunner.class)
 public class FileContentTest {
 
+    private FileContent fileContent;
     @Before
+    public void setup()
+    {
 
+    }
 
     @Test
     public void ShouldCreateFileContentClassWith1FileHolderObject()
     {
-
+        //Given
+        given(fileContent);
     }
 }
