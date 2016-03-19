@@ -17,7 +17,7 @@ public class FileContent {
     }
     public FileContent(File[] files){
         fileContentList = new ArrayList<>();
-        Log.d("FileLength", new Integer(files.length).toString());
+        Log.d("FileLength", Integer.valueOf(files.length).toString());
         for(File file:files)
         {
             Log.d("Exists",new Boolean(file.exists()).toString());
@@ -38,12 +38,18 @@ public class FileContent {
         return fileContentList;
     }
 
+    public int size()
+    {
+        return fileContentList.size();
+    }
+
     /**
      * Created by benjamin on 3/15/16.
      */
     public class FileHolder implements Comparable {
 
-        public final File videoFile;
+        private final File videoFile;
+
         public FileHolder(File f)
         {
             this.videoFile = f;
