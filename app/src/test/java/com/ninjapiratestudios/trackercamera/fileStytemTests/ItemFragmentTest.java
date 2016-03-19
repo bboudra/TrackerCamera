@@ -1,5 +1,6 @@
-package com.ninjapiratestudios.trackercamera;
-import android.os.Bundle;
+package com.ninjapiratestudios.trackercamera.fileStytemTests;
+
+import com.ninjapiratestudios.trackercamera.ItemFragment;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;

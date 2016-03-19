@@ -1,4 +1,4 @@
-package com.ninjapiratestudios.trackercamera;
+package com.ninjapiratestudios.trackercamera.fileStytemTests;
 
 import android.app.DialogFragment;
 import android.app.Fragment;

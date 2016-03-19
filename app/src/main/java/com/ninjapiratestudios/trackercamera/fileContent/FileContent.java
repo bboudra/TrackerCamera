@@ -43,13 +43,9 @@ public class FileContent {
      */
     public class FileHolder implements Comparable {
 
-        public final String id;
-        public final String content;
         public final File videoFile;
         public FileHolder(File f)
         {
-            this.id = f.getAbsolutePath();
-            this.content = f.getName();
             this.videoFile = f;
         }
 

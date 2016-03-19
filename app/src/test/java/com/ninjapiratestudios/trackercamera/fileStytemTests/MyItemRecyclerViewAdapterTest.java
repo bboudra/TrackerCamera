@@ -1,5 +1,4 @@
-package com.ninjapiratestudios.trackercamera;
-
+package com.ninjapiratestudios.trackercamera.fileStytemTests;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,6 +23,5 @@ import static org.mockito.Matchers.anyInt;
 /**
  * Created by benjamin on 3/15/16.
  */
-public class FileContentTest {
-
+public class MyItemRecyclerViewAdapterTest {
 }
