@@ -30,11 +30,12 @@ public class BaseTest {
     protected final String UNIT_TEST_BEFORE_ERROR = "Error in @Before setup " +
             "method: ";
 
-    public void fragmentOnCreateMock() {
-        PowerMockito.suppress(PowerMockito.methods(Fragment.class,
-                "onCreate"));
-    }
 
+    /**
+     * Generates A series of Mock Objects for testing Purposes and Return them to the caller.
+     *
+     * @return The Mock File Objects.
+     */
     public File[] generateExternalStorageFileMockObjects() {
         File mockFile0 = Mockito.mock(File.class);
         given(mockFile0.getAbsolutePath()).willReturn("/storage/emulated/0/Pictures/Tracker_Camera/Video0.mp4");
@@ -80,13 +81,27 @@ public class BaseTest {
         return files;
     }
 
+    /**
+     * Takes a takes a list of files, creates a FileContent object from the first
+     * file, and returns that objects to the caller.
+     *
+     * @param files - list of files.
+     * @return the FileContent object.
+     */
     protected FileContent generateFileContentLength1(File[] files) {
-        FileContent fileContent = new FileContent(Arrays.copyOfRange(files,0,1));
+        FileContent fileContent = new FileContent(Arrays.copyOfRange(files, 0, 1));
         return fileContent;
     }
 
+    /**
+     * Takes a takes a list of files, creates a FileContent object from the list,
+     * and returns that objects to the caller.
+     *
+     * @param files - list of files.
+     * @return the FileContent object.
+     */
     protected FileContent generateFileContentLength8(File[] files) {
-        FileContent fileContent = new FileContent(Arrays.copyOfRange(files,0,8));
+        FileContent fileContent = new FileContent(Arrays.copyOfRange(files, 0, 8));
         return fileContent;
     }
 }

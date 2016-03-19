@@ -24,8 +24,6 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.io.File;
-import java.util.List;
-
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Matchers.anyInt;
@@ -38,6 +36,7 @@ import static org.mockito.Matchers.anyInt;
 public class FileContentTest extends BaseTest {
 
     private FileContent fileContent;
+
     @Before
     public void setup()
     {
@@ -53,6 +52,18 @@ public class FileContentTest extends BaseTest {
         FileContent fileContent = super.generateFileContentLength1(files);
         //Then
         assertEquals(1,fileContent.size());
+    }
+
+    @Test
+    public void ShouldCreateFileContentClassWith8FileHolderObjects()
+    {
+        //Give
+        File[] files = super.generateExternalStorageFileMockObjects();
+        //When
+        FileContent fileContent = super.generateFileContentLength8(files);
+        //Then
+        assertEquals(8,fileContent.size());
+
     }
 
 }
