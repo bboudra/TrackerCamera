@@ -2,6 +2,7 @@ package com.ninjapiratestudios.trackercamera.fileStytemTests;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,9 +45,20 @@ public class FileContentTest extends BaseTest {
     }
 
     @Test
+    public void ShouldCreateEmptyFileHolderObject()
+    {
+        //Given
+
+        //When
+        FileContent fC = new FileContent();
+        //Then
+        assertEquals(0,fC.size());
+    }
+
+    @Test
     public void ShouldCreateFileContentClassWith1FileHolderObject()
     {
-        //Give
+        //Given
         File[] files = super.generateExternalStorageFileMockObjects();
         //When
         FileContent fileContent = super.generateFileContentLength1(files);
@@ -63,7 +75,76 @@ public class FileContentTest extends BaseTest {
         FileContent fileContent = super.generateFileContentLength8(files);
         //Then
         assertEquals(8,fileContent.size());
-
     }
 
+    @Test
+    public void ShouldAddFileHolderObjectToFileContentClass()
+    {
+        //Given
+        FileContent fCTo = new FileContent();
+        File[] files = generateExternalStorageFileMockObjects();
+        FileContent fCFrom = super.generateFileContentLength8(files);
+        FileContent.FileHolder fH= fCFrom.getItem(1);
+
+        //When
+        fCTo.addItem(fH);
+
+        //Then
+        assertEquals(1,fCTo.size());
+        assertEquals(fH,fCTo.getItem(0));
+    }
+
+    @Test
+    public void ShouldGetItemFromFileContentObject()
+    {
+        //Given
+        File fileMock = Mockito.mock(File.class);
+        fileContent = new FileContent();
+        FileContent.FileHolder fH = fileContent.new FileHolder(fileMock);
+        fileContent.addItem(fH);
+
+        //When
+        FileContent.FileHolder fHReturned = fileContent.getItem(0);
+
+        //Then
+        assertEquals(1,fileContent.size());
+        assertEquals(fH,fHReturned);
+    }
+
+    @Test
+    public void fileContentSizeShouldEqual19()
+    {
+        //given
+        File[] files = generateExternalStorageFileMockObjects();
+        File f = Mockito.mock(File.class);
+        given(f.getName()).willReturn("zzzz.mp4");
+        FileContent.FileHolder fH = fileContent.new FileHolder(f);
+
+        //when
+        fileContent = super.generateFileContentLength8(files);
+        fileContent.addItem(fH);
+
+        //then
+        assertEquals(9, fileContent.size());
+    }
+
+    @Test
+    public void itemsShouldBeSortedUponBeingAddedToFileContent()
+    {
+        //given
+        File[] files = super.generateExternalStorageFileMockObjects();
+
+        //when
+        fileContent = super.generateFileContentLength8(files);
+
+        //then
+        assertEquals(files[1], fileContent.getItem(0).getVideoFile());
+        assertEquals(files[2], fileContent.getItem(1).getVideoFile());
+        assertEquals(files[3], fileContent.getItem(2).getVideoFile());
+        assertEquals(files[4], fileContent.getItem(3).getVideoFile());
+        assertEquals(files[5], fileContent.getItem(4).getVideoFile());
+        assertEquals(files[0], fileContent.getItem(5).getVideoFile());
+        assertEquals(files[7], fileContent.getItem(6).getVideoFile());
+        assertEquals(files[6], fileContent.getItem(7).getVideoFile());
+    }
 }

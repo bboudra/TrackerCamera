@@ -1,4 +1,5 @@
 package com.ninjapiratestudios.trackercamera.fileContent;
+
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -15,26 +16,37 @@ public class FileContent {
     /**
      * Creates an empty File Content Object
      */
-    public FileContent(){
+    public FileContent() {
         fileContentList = new ArrayList<>();
     }
+
 
     /**
      * Creates a File Content Object from a list of files.
      *
      * @param files - list of files to create the FileContent object from
      */
-    public FileContent(File[] files){
+    public FileContent(File[] files) {
         fileContentList = new ArrayList<>();
         Log.d("FileLength", Integer.valueOf(files.length).toString());
-        for(File file:files)
-        {
-            Log.d("Exists",Boolean.toString(file.exists()).toString());
+        for (File file : files) {
+            Log.d("Exists", Boolean.toString(file.exists()).toString());
             Log.d("FileName", file.getName());
-            Log.d("FileContents",file.toString());
+            Log.d("FileContents", file.toString());
             fileContentList.add(new FileHolder(file));
         }
         Collections.sort(fileContentList);
+    }
+
+    /**
+     * Retrieves the fileHolder object being stored at the position passed in by the caller
+     * and returns that item to the caller.
+     *
+     * @param position
+     * @return the FileHolder object at that position.
+     */
+    public FileHolder getItem(int position) {
+        return fileContentList.get(position);
     }
 
     /**
@@ -42,7 +54,7 @@ public class FileContent {
      *
      * @param fH - The file holder object being added.
      */
-    public void addItem(FileHolder fH){
+    public void addItem(FileHolder fH) {
         this.fileContentList.add(fH);
         Collections.sort(fileContentList);
     }
@@ -52,8 +64,7 @@ public class FileContent {
      *
      * @return the list of FileHolder Objects.
      */
-    public ArrayList<FileHolder> getItems()
-    {
+    public ArrayList<FileHolder> getItems() {
         return fileContentList;
     }
 
@@ -62,8 +73,7 @@ public class FileContent {
      *
      * @return - the number of FileHolder Object in the FileContent Object.
      */
-    public int size()
-    {
+    public int size() {
         return fileContentList.size();
     }
 
@@ -71,30 +81,33 @@ public class FileContent {
      * Created by benjamin on 3/15/16.
      */
     public class FileHolder implements Comparable {
-        /** The Video file the FileHolder object is holding */
+        /**
+         * The Video file the FileHolder object is holding
+         */
         private final File videoFile;
 
         /**
          * Creates a FileHolder object to hold the file being passed in.
+         *
          * @param f - the file the FileHolder is holding.
          */
-        public FileHolder(File f)
-        {
+        public FileHolder(File f) {
             this.videoFile = f;
         }
 
         /**
          * Retrieves the File the FileHolder object is holding.
+         *
          * @return the videofile the FileHolder object is holding.
          */
-        public File getVideoFile()
-        {
+        public File getVideoFile() {
             return this.videoFile;
         }
 
         /**
          * Compares the names of video files, this is the primary purpose of creating the FileHolder
          * object and is used by FileContent to sort the FileHolder objects it contains.
+         *
          * @param another
          * @return
          */
@@ -108,7 +121,9 @@ public class FileContent {
                         "Are you sure that you provided an object of type FileHolder?");
                 System.exit(1);
             }
-            return this.getVideoFile().getName().compareToIgnoreCase(fileToCompare.getVideoFile().getName());
+            String name1 = this.getVideoFile().getName();
+            String name2 = fileToCompare.getVideoFile().getName();
+            return name1.compareToIgnoreCase(name2);
         }
 
     }
