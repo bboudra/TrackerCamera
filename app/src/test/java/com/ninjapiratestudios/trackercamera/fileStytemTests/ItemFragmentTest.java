@@ -2,20 +2,30 @@ package com.ninjapiratestudios.trackercamera.fileStytemTests;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Environment;
 
 import com.ninjapiratestudios.trackercamera.ItemFragment;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import static org.mockito.BDDMockito.given;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.io.File;
+
 import static org.mockito.Matchers.any;
 
 /**
- * Created by benjamin on 3/15/16.
+ * Tests the Item Frament Class
+ *
+ * @author Benjmain Boudra
+ * @version 1.0
+ * @date 3/20/2016
  */
 @PrepareForTest(ItemFragment.class)
 @RunWith(PowerMockRunner.class)
@@ -25,7 +35,7 @@ public class ItemFragmentTest extends BaseTest{
     @Before
     public void setup()
     {
-        itemFragment = Mockito.spy(new ItemFragment());
+        itemFragment = PowerMockito.spy(new ItemFragment());
     }
 
     public void columnCountShouldEqual1(){
@@ -40,6 +50,11 @@ public class ItemFragmentTest extends BaseTest{
     } //NOTHING IS HAPPENING HERE THAT CAN BE VERIFIED. STILL WANT TO KEEP AS REFERENCE.
 
 
+    @Test
+    public void shouldCallPublicExternalDirectory()
+    {
+    }
+
     //HELPER METHODS
 
     /**
@@ -50,4 +65,5 @@ public class ItemFragmentTest extends BaseTest{
         PowerMockito.suppress(PowerMockito.methods(Fragment.class,
                 "onCreate"));
     }
+
 }

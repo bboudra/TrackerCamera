@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ninjapiratestudios.trackercamera.dummy.DummyContent;
-
 import java.io.File;
 
 public class VideoActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {

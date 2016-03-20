@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ninjapiratestudios.trackercamera.dummy.DummyContent;
-import com.ninjapiratestudios.trackercamera.dummy.DummyContent.DummyItem;
 import com.ninjapiratestudios.trackercamera.fileContent.FileContent;
 
 import java.io.File;
@@ -80,20 +78,20 @@ public class ItemFragment extends Fragment {
 
 
     public FileContent getFileContent(boolean external){ //return type FileContent
-        File f = null;
-        File[] files = null;
+        File f;
+        File[] files;
         if(external)
         {
             f = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Tracker_Camera");
-            files = f.listFiles();
         } else {
             f = getActivity().getDir("files", Context.MODE_WORLD_READABLE);
-            files = f.listFiles();
         }
-        Log.d("FilePath", f.getAbsolutePath());
-        Log.d("FileContent", new Boolean(f.exists()).toString());
-        FileContent fC = new FileContent(files);
-        return fC;
+        if(!f.exists())
+            f.mkdir();
+        files = f.listFiles();
+        Log.d("FilePath", f.getPath());
+        Log.d("FileExists", Boolean.toString(f.exists()));
+        return new FileContent(files);
     }
 
 

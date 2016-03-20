@@ -27,10 +27,11 @@ public class FileContent {
      * @param files - list of files to create the FileContent object from
      */
     public FileContent(File[] files) {
+        assert files != null;
         fileContentList = new ArrayList<>();
         Log.d("FileLength", Integer.valueOf(files.length).toString());
         for (File file : files) {
-            Log.d("Exists", Boolean.toString(file.exists()).toString());
+            Log.d("Exists", Boolean.toString(file.exists()));
             Log.d("FileName", file.getName());
             Log.d("FileContents", file.toString());
             fileContentList.add(new FileHolder(file));
@@ -42,7 +43,7 @@ public class FileContent {
      * Retrieves the fileHolder object being stored at the position passed in by the caller
      * and returns that item to the caller.
      *
-     * @param position
+     * @param position - the position of the FileHolder object in the FileContent Object.
      * @return the FileHolder object at that position.
      */
     public FileHolder getItem(int position) {
@@ -108,8 +109,8 @@ public class FileContent {
          * Compares the names of video files, this is the primary purpose of creating the FileHolder
          * object and is used by FileContent to sort the FileHolder objects it contains.
          *
-         * @param another
-         * @return
+         * @param another - The Object Being compared
+         * @return the result of the comparison
          */
         @Override
         public int compareTo(Object another) {
