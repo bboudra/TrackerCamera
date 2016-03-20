@@ -60,6 +60,7 @@ public class VideoActivity extends AppCompatActivity implements ItemFragment.OnL
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_VIEW);
         galleryIntent.setDataAndType(videoUri, "video/*");
+        galleryIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(galleryIntent);
     }
 }

@@ -50,7 +50,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
                     Log.i("Action", "A button was just Clicked");
-                    // mListener.onListFragmentInteraction(Uri.parse(holder.mItem.getVideoFile().getAbsolutePath()));
+                    //mListener.onListFragmentInteraction(Uri.parse(holder.mItem.getVideoFile().getAbsolutePath()));
                     mListener.onListFragmentInteraction(Uri.fromFile(mValues.get(position).getVideoFile()));
                 }
             }
