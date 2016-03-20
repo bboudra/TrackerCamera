@@ -13,6 +13,8 @@ import android.view.MenuItem;
 
 import com.ninjapiratestudios.trackercamera.dummy.DummyContent;
 
+import java.io.File;
+
 public class VideoActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     @Override
@@ -56,7 +58,8 @@ public class VideoActivity extends AppCompatActivity implements ItemFragment.OnL
     }
 
     @Override
-    public void onListFragmentInteraction(Uri videoUri) {
+    public void onListFragmentInteraction(File f) {
+        Uri videoUri = Uri.fromFile(f);
         Intent galleryIntent = new Intent();
         galleryIntent.setAction(Intent.ACTION_VIEW);
         galleryIntent.setDataAndType(videoUri, "video/*");

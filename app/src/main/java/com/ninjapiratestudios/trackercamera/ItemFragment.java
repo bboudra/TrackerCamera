@@ -126,6 +126,6 @@ public class ItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Uri file);
+        void onListFragmentInteraction(File file);
     }
 }

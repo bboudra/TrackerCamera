@@ -12,6 +12,7 @@ import com.ninjapiratestudios.trackercamera.ItemFragment.OnListFragmentInteracti
 import com.ninjapiratestudios.trackercamera.dummy.DummyContent.DummyItem;
 import com.ninjapiratestudios.trackercamera.fileContent.FileContent;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                     // fragment is attached to one) that an item has been selected.
                     Log.i("Action", "A button was just Clicked");
                     //mListener.onListFragmentInteraction(Uri.parse(holder.mItem.getVideoFile().getAbsolutePath()));
-                    mListener.onListFragmentInteraction(Uri.fromFile(mValues.get(position).getVideoFile()));
+                    File f = mValues.get(position).getVideoFile();
+                    mListener.onListFragmentInteraction(f);
                 }
             }
         });
