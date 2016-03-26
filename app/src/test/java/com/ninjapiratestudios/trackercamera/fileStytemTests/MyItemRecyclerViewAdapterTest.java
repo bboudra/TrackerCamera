@@ -61,4 +61,12 @@ public class MyItemRecyclerViewAdapterTest extends BaseTest{
         //then
         assertEquals(8, mIRVA.getItemCount());
     }
+
+    @Test
+    public void onCreateViewShouldcallRecycler()
+    {
+
+    }
+
+
 }

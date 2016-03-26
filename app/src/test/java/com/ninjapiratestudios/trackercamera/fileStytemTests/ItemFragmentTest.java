@@ -53,6 +53,8 @@ public class ItemFragmentTest extends BaseTest{
     @Test
     public void shouldCallPublicExternalDirectory()
     {
+        //Given
+        PowerMockito.mockStatic(Environment.class);
     }
 
     //HELPER METHODS

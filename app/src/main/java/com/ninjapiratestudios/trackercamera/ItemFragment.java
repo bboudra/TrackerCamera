@@ -94,7 +94,6 @@ public class ItemFragment extends Fragment {
         return new FileContent(files);
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -126,4 +125,7 @@ public class ItemFragment extends Fragment {
         // TODO: Update argument type and name
         void onListFragmentInteraction(File file);
     }
+
+
+    //Helper Methods
 }
